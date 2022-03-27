@@ -1,0 +1,29 @@
+.loginContainer{
+background-color: rgb(1, 22, 39);
+width: 100vw;
+height: 100vh;
+.container{
+    .mainContainer{
+        
+        
+        background-color: rgba(70, 115, 160, 0.308);
+        padding: 2em;
+        border-radius: 0.3em;
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 10em;
+      
+        .loginBtnContainer{
+            padding: 1em;
+            .loginBtn{
+                border: none;
+                padding: 0.2em;
+                border-radius: 0.2em;
+                font-size: 1.2em;
+                color: rgba(70, 115, 160, 0.781);
+                font-weight: bold;
+            }
+        }
+    }
+}
+}

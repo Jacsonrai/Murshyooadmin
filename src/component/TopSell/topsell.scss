@@ -1,0 +1,22 @@
+.topSellContainer{
+    padding-top: 1em;
+    height: 20em;
+    overflow-x: scroll;
+    
+   
+    .container{
+        .mainContainer{
+            display: flex;
+            align-items: center;
+            padding: 1em;
+            gap: 2em;
+            
+            .imageContainer{
+               .image{
+                   width: 3em;
+                   height: 3em;
+               }
+            }
+        }
+    }
+}

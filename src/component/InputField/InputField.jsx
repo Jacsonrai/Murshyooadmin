@@ -1,5 +1,5 @@
 import './inputfield.scss'
-const InputField=({name,type})=>{
+const InputField=({name,type,handleChange,value})=>{
    
 return(
     <div className="inputFieldContainer">
@@ -8,7 +8,7 @@ return(
                 <label className='labelName'>{name}</label>
             </div>
             <div className="inputFieldContainer">
-                <input type={type} className='inputText'/>
+                <input type={type} className='inputText' value={value} onChange={handleChange} />
 
             </div>
 

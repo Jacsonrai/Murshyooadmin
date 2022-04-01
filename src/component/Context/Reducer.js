@@ -5,6 +5,10 @@ switch(type){
         return{...state,isAuth:true,token:payload}
     case "LOGOUT":
         return{...state,isAuth:false,token:payload}
+    case "EMAILERROR":
+        return{...state,errorMessage:"invalid username"}
+    case "PASSWORDERROR":
+        return{...state,errorMessage:"INVALID PASSWORD"}
     default:
         return state
 }

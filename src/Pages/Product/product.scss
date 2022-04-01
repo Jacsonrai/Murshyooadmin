@@ -8,6 +8,13 @@
         }
         .mainContainer{
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+           
+            .inputField{
+                padding:0.3em;
+                margin-bottom: 0.2em;
+                margin-top: 0.4em;
+            }
+            
             .formContainer{
                 display: flex;
                 flex-wrap: wrap;

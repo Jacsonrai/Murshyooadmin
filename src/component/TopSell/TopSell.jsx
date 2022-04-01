@@ -1,18 +1,25 @@
 import './topsell.scss'
-import { productData } from '../../global/DummyData'
+
+import { useContext, useEffect } from 'react'
+import { GetUserContext } from '../Context/GetUserContext'
 const TopSell=()=>{
+    const{getProduct,productData}=useContext(GetUserContext)
+    useEffect(()=>{
+        getProduct()
+    },[])
+    console.log('product',productData)
 return(
  <div className="topSellContainer">
      <div className="container">
-         {productData?.map((item,index)=>(
+         {productData?.data?.product?.map((item,index)=>(
               <div className="mainContainer" key={index}>
               <div className="imageContainer">
                <figure>
-                   <img src={item.img} alt="productImage" className="image"/>
+                   <img src={item.productPicture} alt="productImage" className="image"/>
                </figure>
               </div>
               <div className="productDetails">
-                  <h4>{item.product}</h4>
+                  <h4>{item.name}</h4>
                   <h6>the product is one of best</h6>
                </div>
               <div className="productPrice">

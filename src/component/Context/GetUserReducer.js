@@ -7,6 +7,8 @@ switch(type){
         return {...state,productData:payload}
     case "DELETEUSER":
             return {...state,isLoading:false}
+    case "GETCATEGORY":
+        return {...state,categoryData:payload}
     default:
         return state
 }

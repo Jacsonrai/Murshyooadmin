@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {useDropzone} from 'react-dropzone';
 
 const baseStyle = {
@@ -30,18 +30,27 @@ const rejectStyle = {
 };
 
 export default function StyledDropzone(props) {
+const onDrop=useCallback(
+  (acceptedFiles)=>{
+   
+     props.setFile(acceptedFiles[0])
+  },[])
   const {
     getRootProps,
     getInputProps,
     isFocused,
     isDragAccept,
-    isDragReject
-  } = useDropzone({accept: 'image/*'});
-
+    isDragReject,acceptedFiles
+  } = useDropzone({onDrop,multiple:false,accept:"image/*"});
+  const files = acceptedFiles.map(file => (
+    <li key={file.path}>
+      {file.path} 
+    </li>
+  ));
   const style = useMemo(() => ({
     ...baseStyle,
     ...(isFocused ? focusedStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragAccept===true ? acceptStyle : {}),
     ...(isDragReject ? rejectStyle : {})
   }), [
     isFocused,
@@ -53,8 +62,11 @@ export default function StyledDropzone(props) {
     <div className="container">
       <div {...getRootProps({style})}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop your image here</p>
+       <p>Drag 'n' drop your image here</p>
       </div>
+      <aside>
+        <ul>{files}</ul>
+      </aside>
     </div>
   );
 }

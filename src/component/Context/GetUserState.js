@@ -9,7 +9,8 @@ import GetUserReducer from "./GetUserReducer";
 const initialState={
     isLoading:false,
     userData:'',
-    productData:''
+    productData:'',
+    categoryData:''
 }
 const GetUserState=({children})=>{
     const[state,dispatch]=useReducer(GetUserReducer,initialState)
@@ -48,7 +49,9 @@ const GetUserState=({children})=>{
             console.log(error)
         })
     }
-    const getProduct=()=>{
+
+    //product state
+ const getProduct=()=>{
         const headers={
             'Content-Type': 'application/json',
            
@@ -66,8 +69,55 @@ const GetUserState=({children})=>{
         })
 
     }
+ const createProduct=async(datas,token)=>{
+console.log(datas)
+console.log(token)
+const{name,promoCode,file,selectValue,price}=datas
+const formData=new FormData();
+formData.append("productPicture",file)
+formData.append("name",name)
+formData.append("promoCode",promoCode)
+formData.append("price",price)
+formData.append("category",selectValue.value)
+
+
+   
+    const headers={
+        'Content-Type': 'multipart/form-data',
+        'Authorization':`Bearer ${token}`,
+       
+    }
+    await axios.post(Api.createdProduct,formData,{
+        headers:headers
+    }).then(function(response){
+        console.log(response)
+    }).catch(function(error){
+        console.log(error)
+    })
+ }
+
+//category state
+const getCategory=()=>{
+    const headers={
+        'Content-Type': 'application/json',
+       
+    }
+    axios.get(Api.getCategory,{
+        headers:headers
+    }).then(function(response){
+        dispatch({
+            type:"GETCATEGORY",
+            payload:response.data
+        })
+        console.log(response)
+    }).catch(function(error){
+        console.log(error)
+    })
+
+}
+
     return <GetUserContext.Provider value={{
-        ...state,getUser,getProduct,deleteUser
+        ...state,getUser,getProduct,deleteUser,getCategory,createProduct
     }}>
     {children}
     </GetUserContext.Provider>

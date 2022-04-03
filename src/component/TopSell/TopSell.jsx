@@ -2,12 +2,14 @@ import './topsell.scss'
 
 import { useContext, useEffect } from 'react'
 import { GetUserContext } from '../Context/GetUserContext'
+
 const TopSell=()=>{
     const{getProduct,productData}=useContext(GetUserContext)
+    console.log('product',productData)
     useEffect(()=>{
         getProduct()
     },[])
-    console.log('product',productData)
+   
 return(
  <div className="topSellContainer">
      <div className="container">

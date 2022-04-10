@@ -12,3 +12,11 @@ export const ProductValidSchema=yup.object().shape({
   
  
 });
+export const modelValidSchema=yup.object().shape({
+  name: yup.string().required('Model name is required'),
+  email: yup.string().required('Model email is required'),
+  description: yup.string().required('Model email is required'),
+ 
+  
+ 
+});

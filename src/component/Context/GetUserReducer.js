@@ -9,6 +9,8 @@ switch(type){
             return {...state,isLoading:false}
     case "GETCATEGORY":
         return {...state,categoryData:payload}
+    case "GETORDER":
+        return {...state,orderData:payload}
     default:
         return state
 }

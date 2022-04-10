@@ -5,6 +5,8 @@ const Api={
     "getProduct":`${baseUrl}/api/product/getproduct`,
     "deleteUser":`${baseUrl}/api/user`,
     "getCategory":`${baseUrl}/api/category/getcategory`,
-    "createdProduct":`${baseUrl}/api/product/create`
+    "createdProduct":`${baseUrl}/api/product/create`,
+    "createdModel":`${baseUrl}/api/model/create`,
+    "getOrder":`${baseUrl}/api/order/getorder`
 }
 export {Api}

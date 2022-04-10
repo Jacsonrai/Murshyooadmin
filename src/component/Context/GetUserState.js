@@ -10,7 +10,8 @@ const initialState={
     isLoading:false,
     userData:'',
     productData:'',
-    categoryData:''
+    categoryData:'',
+    orderData:''
 }
 const GetUserState=({children})=>{
     const[state,dispatch]=useReducer(GetUserReducer,initialState)
@@ -51,6 +52,7 @@ const GetUserState=({children})=>{
     }
 
     //product state
+
  const getProduct=()=>{
         const headers={
             'Content-Type': 'application/json',
@@ -95,6 +97,33 @@ formData.append("category",selectValue.value)
         console.log(error)
     })
  }
+ //model state
+ const createModel=async(datas,token)=>{
+    console.log(datas)
+    console.log(token)
+    const{name,email,file,description}=datas
+    const formData=new FormData();
+    formData.append("modelPicture",file)
+    formData.append("name",name)
+    formData.append("email",email)
+    formData.append("description",description)
+  
+    
+    
+       
+        const headers={
+            'Content-Type': 'multipart/form-data',
+            'Authorization':`Bearer ${token}`,
+           
+        }
+        await axios.post(Api.createdModel,formData,{
+            headers:headers
+        }).then(function(response){
+            console.log(response)
+        }).catch(function(error){
+            console.log(error)
+        })
+     }
 
 //category state
 const getCategory=()=>{
@@ -115,12 +144,31 @@ const getCategory=()=>{
     })
 
 }
+//order state
+const getOrder=()=>{
+    const headers={
+        'Content-Type': 'application/json',
+       
+    }
+    axios.get(Api.getOrder,{
+        headers:headers
+    }).then(function(response){
+        dispatch({
+            type:"GETORDER",
+            payload:response.data
+        })
+        console.log(response)
+    }).catch(function(error){
+        console.log(error)
+    })
 
+}
     return <GetUserContext.Provider value={{
-        ...state,getUser,getProduct,deleteUser,getCategory,createProduct
+        ...state,getOrder,getUser,getProduct,deleteUser,getCategory,createProduct, createModel
     }}>
     {children}
     </GetUserContext.Provider>
 
 }
+
 export {GetUserState}

@@ -4,6 +4,7 @@ import { GiShoppingCart } from "react-icons/gi";
 import { BiLogOut } from "react-icons/bi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
+import {RiWomenLine} from 'react-icons/ri'
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
 import { useContext, useEffect, useState } from "react";
@@ -41,7 +42,7 @@ const SideBar = () => {
             </NavLink>
             <NavLink to="/order" className="nav-item">
               <GiShoppingCart fontSize={30} />
-              Oders
+              Orders
             </NavLink>
             <NavLink to="/product" className="nav-item">
               <MdOutlineProductionQuantityLimits fontSize={30} />
@@ -50,6 +51,10 @@ const SideBar = () => {
             <NavLink to="/user" className="nav-item">
               <FiUsers fontSize={30} />
               User
+            </NavLink>
+            <NavLink to="/model" className="nav-item">
+              <RiWomenLine fontSize={30} color={"white"} />
+              Model
             </NavLink>
             <div className="logoutBtnContainer">
               <BiLogOut fontSize={30} />

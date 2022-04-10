@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import {  Route, Routes } from "react-router-dom"
 import Login from "../../Pages/Auth/Login"
 import Dashboard from "../../Pages/Dashboard/Dashboard"
+import Model from "../../Pages/Model/Model"
 import Orders from "../../Pages/Orders/Orders"
 import PageNotFound from "../../Pages/PageNotFound"
 import Product from "../../Pages/Product/Product"
@@ -22,7 +23,7 @@ return(<>
     <Route path="/" element={<Dashboard/>}/>
     <Route path="/order" element={<Orders/>}/>
     <Route path="/user" element={<User/>}/>
-   
+    <Route path="/model" element={<Model/>}/>
     <Route path="/product" element={<Product/>}/>
     <Route path="*" element={<PageNotFound/>}/>
 

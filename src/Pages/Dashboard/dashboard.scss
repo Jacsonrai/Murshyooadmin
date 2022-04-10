@@ -41,14 +41,44 @@
       .image-container {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
           rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-
-        .image {
-          padding: 0.4em;
-          object-fit: fill;
-          width: 30em;
-          height: 20em;
-          border-radius: 2em;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.3em;
+        .pieChatDetailsContainer{
+          display: flex;
+          align-items: center;
+          .daigram{
+            width: 20em;
+            margin-top: -5em;
+          }
+          .chartDetails{
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+           
+            .chartDetailsContainer{
+              display: flex;
+              gap:1em;
+              align-items: center;
+            }
+            .colorContainer{
+              background-color: rgb(0, 136, 254);
+              height: 1.3em;
+              width: 1.3em;
+            }
+            .colorContainer2{
+              background-color: rgb(0, 196, 159);
+              height: 1.3em;
+              width: 1.3em;
+            }
+            .userDiagramtext{
+              margin-top: 0.3em;
+            }
+          }
         }
+       
       }
       .info-container{
         display: flex;  

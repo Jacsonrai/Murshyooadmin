@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import BreadCrumbs from "../../component/BreadCrumb/BreadCrumb";
 import { GetUserContext } from "../../component/Context/GetUserContext";
+import Pagination from "../../component/Pagination/Pagination";
 import TopSell from "../../component/TopSell/TopSell";
 import "./orders.scss";
 
@@ -10,6 +11,13 @@ import "./orders.scss";
 const Orders = () => {
   const{getOrder,orderData}=useContext(GetUserContext)
   const[data,setData]=useState()
+  const[dataLatest]=useState(orderData?.orders?.slice(0,50))
+  const[pageNumber,setPageNumber]=useState(0)
+  const dataPerPage=5
+  const pageVisited=pageNumber*dataPerPage
+  const displayData=dataLatest.slice(pageVisited,pageVisited+dataPerPage)
+  
+  console.log('order',dataLatest)
   
   useEffect(()=>{
     getOrder()
@@ -23,7 +31,11 @@ const Orders = () => {
     )
   },[orders])
 
-  
+  const pageCount=Math.ceil(dataLatest.length/dataPerPage)
+  const changePage=({selected})=>{
+    setPageNumber(selected)
+
+  }
 
  
  
@@ -46,7 +58,7 @@ const Orders = () => {
                   <th className="headContainer">product price</th>
                   <th className="headContainer">product quantity</th>
                 </tr>
-              {orders?.map((each,index)=>(
+              {displayData?.map((each,index)=>(
                    <tr>
                    <td>{each.name}</td>
                    <td>{each.contact}</td>
@@ -70,11 +82,15 @@ const Orders = () => {
               ))}
               
               </table>
+             
             </div>
+            <Pagination pageCount={pageCount} changePage={changePage}/>
           </div>
           <div className="rightContainer">
             <h5 className="title">Top Order product</h5>
             <TopSell />
+           
+            
           </div>
         </div>
       </div>

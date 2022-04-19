@@ -9,6 +9,7 @@ import StyledDropzone from "../../component/StyleDropzone/StyleDropzone";
 import { ProductValidSchema } from "../../component/validator/validationSchema";
 import Select from 'react-select'
 import "./product.scss";
+import TopSell from "../../component/TopSell/TopSell";
 const Product = () => {
   const [file, setFile] = useState(null);
   const{categoryData,getCategory,createProduct}=useContext(GetUserContext)
@@ -47,8 +48,10 @@ const Product = () => {
   return (
     <div className="productContainer">
       <div className="container">
+        
         <BreadCrumbs item1={"Dashboard"} activeItem={"Prodcut"} itemUrl="/" />
         <h4 className="productTitle">Product</h4>
+        <div style={{display:"flex",gap:"5em"}}>
         <div className="mainContainer" style={{ width: "100%" }}>
           <Formik
             initialValues={initialValue}
@@ -113,7 +116,14 @@ const Product = () => {
               </div>
             </Form>
           </Formik>
+
         </div>
+        <div className='rightContainer'>
+               <h3 className='topSellTitle'>Recent added</h3>
+                <TopSell/>
+                </div>
+        </div>
+       
       </div>
     </div>
   );

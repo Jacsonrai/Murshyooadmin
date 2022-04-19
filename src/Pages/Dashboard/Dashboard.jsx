@@ -10,6 +10,8 @@ import { useContext, useEffect, useState } from 'react'
 import { GetUserContext } from '../../component/Context/GetUserContext'
 
 import PieCharts from '../../component/PieChart/PieChart'
+import BarCharts from '../../component/PieChart/BarGraph'
+
 const Dashboard=()=>{
     const{getUser,getOrder,userData,orderData}=useContext(GetUserContext)
     const[datas,setDatas]=useState()
@@ -48,14 +50,16 @@ const Dashboard=()=>{
         <div className="container">
             <div className="top-main-container">
              <div className='image-container'>
-                 <h1>User Chart</h1>
+                
            
              <div className='pieChatDetailsContainer'>
              <div className='daigram'>
-             <PieCharts/>
+             {/* <PieCharts/> */}
+             <BarCharts/>
+           
              </div>
              
-             <div className='chartDetails'>
+             {/* <div className='chartDetails'>
                  <div className='chartDetailsContainer'>
                  <div className='colorContainer'></div>
                   <h6 className='userDiagramtext'>Register</h6>
@@ -65,7 +69,7 @@ const Dashboard=()=>{
                   <h6 className='userDiagramtext'>Unregister</h6>
                   </div>
              
-             </div>
+             </div> */}
                
              </div>
              </div>

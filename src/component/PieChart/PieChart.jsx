@@ -8,21 +8,25 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 
 const PieCharts= () => {
-    const{getUser,userData}=useContext(GetUserContext)
+    const{getUser,userData,getProduct,productData}=useContext(GetUserContext)
     const[token,setToken]=useState('')
     const[datas,setDatas]=useState()
+    const[productDatas,setProductDatas]=useState()
     useEffect(()=>{
         const data=localStorage.getItem('userDetails')
         const {token}=JSON.parse(data)
         setToken(token)
         getUser(token)
+        getProduct()
       },[])
       useEffect(()=>{
        const value= userData?.data?.user?.length
-       console.log(value)
+       const productValue= productData?.data?.product?.length
+       console.log('product',productValue)
        setDatas(value)
+       setProductDatas(productValue)
 
-      },[userData])
+      },[])
 
     const data = [
         { name: "Group A", value: datas },

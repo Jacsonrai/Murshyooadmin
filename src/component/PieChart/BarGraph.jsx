@@ -21,23 +21,24 @@ export default function BarCharts() {
     const[productDatas,setProductDatas]=useState()
     const[orderDatas,setOrderDatas]=useState()
     const[orderss,setOrderss]=useState()
+    console.log('order',orderData?.orders)
     const data = [
         {
           name: "User",
         
-          pv: datas,
+          index: datas,
           amt: 2400
         },
         {
           name: "Order",
           
-          pv:orderss,
+          index:orderss,
           amt: 2210
         },
         {
           name: "Product",
           
-          pv:productDatas,
+          index:productDatas,
           amt: 2290
         },
        
@@ -65,7 +66,7 @@ export default function BarCharts() {
         )
       },[orders])
       useEffect(()=>{
-        const value=orderDatas?.length
+        const value=orderData?.orders?.length
         console.log(value)
         setOrderss(value)
  
@@ -87,8 +88,10 @@ export default function BarCharts() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="pv" fill="#8884d8" />
-      <Bar dataKey="uv" fill="#82ca9d" />
+
+      
+      <Bar dataKey="index" fill="#8884d8" />
+      {/* <Bar dataKey="down" fill="#82ca9d" /> */}
     </BarChart>
   );
 }

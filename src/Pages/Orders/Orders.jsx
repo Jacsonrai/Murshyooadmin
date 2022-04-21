@@ -11,19 +11,24 @@ import "./orders.scss";
 const Orders = () => {
   const{getOrder,orderData}=useContext(GetUserContext)
   const[data,setData]=useState()
-  const[dataLatest]=useState(orderData?.orders?.slice(0,50))
+  const[dataLatest,setDataLatest]=useState([])
   const[pageNumber,setPageNumber]=useState(0)
   const dataPerPage=5
   const pageVisited=pageNumber*dataPerPage
   const displayData=dataLatest.slice(pageVisited,pageVisited+dataPerPage)
   
-  console.log('order',dataLatest)
+
+
+  console.log(dataLatest)
+useEffect(()=>{
+  setDataLatest(orderData?orderData?.orders?.slice(0,50):[])
+},[orderData])
   
   useEffect(()=>{
     getOrder()
   },[])
   const{orders}=orderData
-  console.log(orders)
+
 
   useEffect(()=>{
     orders?.map((each)=>(
@@ -60,15 +65,15 @@ const Orders = () => {
                 </tr>
               {displayData?.map((each,index)=>(
                    <tr>
-                   <td>{each.name}</td>
-                   <td>{each.contact}</td>
-                   <td>{each.address}</td>
+                   <td>{each?.name}</td>
+                   <td>{each?.contact}</td>
+                   <td>{each?.address}</td>
                    <td></td>
                    {data?.map((each)=>(
                      <>
-                       <td>{each.product}</td>
-                       <td>{each.price}</td>
-                       <td>{each.quantity}</td>
+                       <td>{each?.product}</td>
+                       <td>{each?.price}</td>
+                       <td>{each?.quantity}</td>
                      </>
                     
                    ))}
@@ -86,12 +91,12 @@ const Orders = () => {
             </div>
             <Pagination pageCount={pageCount} changePage={changePage}/>
           </div>
-          <div className="rightContainer">
+          {/* <div className="rightContainer">
             <h5 className="title">Top Order product</h5>
             <TopSell />
            
             
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

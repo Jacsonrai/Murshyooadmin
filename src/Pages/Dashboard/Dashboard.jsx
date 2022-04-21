@@ -39,7 +39,7 @@ const Dashboard=()=>{
        },[userData])
 
        useEffect(()=>{
-        const value=data?.length
+        const value=orderData?.orders?.length
         console.log(value)
         setOrderss(value)
  

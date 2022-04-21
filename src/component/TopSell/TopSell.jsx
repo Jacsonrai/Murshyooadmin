@@ -1,15 +1,24 @@
 import './topsell.scss'
 
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect,useState } from 'react'
 import { GetUserContext } from '../Context/GetUserContext'
 
 const TopSell=()=>{
     const{getProduct,productData}=useContext(GetUserContext)
     console.log('product',productData)
+    const[data,setData]=useState()
     useEffect(()=>{
         getProduct()
     },[])
-   
+    console.log('happy',data)
+//     const[dataLatest]=useState(productData?.data?.product?.slice(0,50))
+//   const[pageNumber,setPageNumber]=useState(0)
+//   const dataPerPage=5
+//   const pageVisited=pageNumber*dataPerPage
+//   const displayData=dataLatest.slice(pageVisited,pageVisited+dataPerPage)
+//   console.log('data',dataLatest&&dataLatest)
+
+  
 return(
  <div className="topSellContainer">
      <div className="container">

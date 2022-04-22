@@ -22,15 +22,15 @@ const Dashboard=()=>{
         const {token}=JSON.parse(data)
         getUser(token)   
     },[])
-    const{orders}=orderData
+console.log('orderLength',orderss)
     useEffect(()=>{
         getOrder()
       },[])
-    useEffect(()=>{
-        orders?.map((each)=>(
-          setData(JSON.parse(each?.orderItems)))
-        )
-      },[orders])
+    // useEffect(()=>{
+    //     orders?.map((each)=>(
+    //       setData(JSON.parse(each?.orderItems)))
+    //     )
+    //   },[orders])
     useEffect(()=>{
         const value= userData?.data?.user?.length
         console.log(value)
@@ -43,7 +43,7 @@ const Dashboard=()=>{
         console.log(value)
         setOrderss(value)
  
-       },[userData])
+       },[orderData])
     
     return(
     <div className="dashboard-container">

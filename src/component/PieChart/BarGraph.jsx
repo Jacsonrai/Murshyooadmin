@@ -59,18 +59,14 @@ export default function BarCharts() {
        setDatas(value)
 
       },[userData])
-      const{orders}=orderData
-      useEffect(()=>{
-        orders?.map((each)=>(
-          setOrderDatas(JSON.parse(each?.orderItems)))
-        )
-      },[orders])
+    
+     
       useEffect(()=>{
         const value=orderData?.orders?.length
         console.log(value)
         setOrderss(value)
  
-       },[userData])
+       },[orderData])
   return (
     <BarChart
       width={500}

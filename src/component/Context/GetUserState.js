@@ -155,9 +155,9 @@ const getOrder=()=>{
     }).then(function(response){
         dispatch({
             type:"GETORDER",
-            payload:response.data
+            payload:response?.data
         })
-        console.log(response)
+        console.log('ordersJakcosn',response)
     }).catch(function(error){
         console.log(error)
     })

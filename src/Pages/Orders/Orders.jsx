@@ -10,16 +10,16 @@ import "./orders.scss";
 
 const Orders = () => {
   const{getOrder,orderData}=useContext(GetUserContext)
-  const[data,setData]=useState()
+  const[data,setData]=useState([])
   const[dataLatest,setDataLatest]=useState([])
   const[pageNumber,setPageNumber]=useState(0)
   const dataPerPage=5
   const pageVisited=pageNumber*dataPerPage
   const displayData=dataLatest.slice(pageVisited,pageVisited+dataPerPage)
   
+console.log('jackso',orderData)
 
-
-  console.log(dataLatest)
+  console.log('latest',displayData)
 useEffect(()=>{
   setDataLatest(orderData?orderData?.orders?.slice(0,50):[])
 },[orderData])
@@ -27,14 +27,23 @@ useEffect(()=>{
   useEffect(()=>{
     getOrder()
   },[])
-  const{orders}=orderData
+  // const{orders}=orderData
 
 
-  useEffect(()=>{
-    orders?.map((each)=>(
-      setData(JSON.parse(each?.orderItems)))
-    )
-  },[orders])
+  // useEffect(()=>{
+  //   orders?.map((each)=>(
+  //     setData(JSON.parse(each?.orderItems)))
+  //   )
+  // },[orders])
+  // useEffect(()=>{
+  //   orderData?.orders?.map((each)=>(
+  //     each?.orderItems?.map((item)=>(
+  //     //  setData(JSON.parse(item))
+  //      console.log(item)
+      
+  //     ))
+  //   ))
+  // },[orderData])
 
   const pageCount=Math.ceil(dataLatest.length/dataPerPage)
   const changePage=({selected})=>{
@@ -69,14 +78,14 @@ useEffect(()=>{
                    <td>{each?.contact}</td>
                    <td>{each?.address}</td>
                    <td></td>
-                   {data?.map((each)=>(
+                   {each?.orderItems?.map((item)=>( 
                      <>
-                       <td>{each?.product}</td>
-                       <td>{each?.price}</td>
-                       <td>{each?.quantity}</td>
+                       <td>{item?.product}</td>
+                        <td>{item?.price}</td>
+                       <td>{item?.quantity}</td>
                      </>
                     
-                   ))}
+                   ))}  
                  
           
     
@@ -89,7 +98,7 @@ useEffect(()=>{
               </table>
              
             </div>
-            <Pagination pageCount={pageCount} changePage={changePage}/>
+            <Pagination pageCount={pageCount} changePage={changePage}/> 
           </div>
           {/* <div className="rightContainer">
             <h5 className="title">Top Order product</h5>
